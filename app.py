@@ -3,7 +3,6 @@ from ortools.constraint_solver import routing_enums_pb2
 from ortools.constraint_solver import pywrapcp
 
 app = Flask(__name__)
-# model = pickle.load(open('model.pkl', 'rb'))
 
 data = {}
 data['distance_matrix'] = []
@@ -16,18 +15,8 @@ data['demands'] = []
 def home():
     return render_template('OptimalRoute.html')
 
-# @app.route('/predict',methods=['POST'])
-# def predict():
-#     '''
-#     For rendering results on HTML GUI
-#     '''
-#     data['distance_matrix'] = request.form.get('distance_matrix')
-#     data['vehicle_capacities'] = request.form.get('vehicle_capacities')
-#     data['demands'] = request.form.get('demands')
-#     data['num_vehicles'] = request.form.get('num_vehicles')
-#     data['depot'] = request.form.get('depot')
 
-@app.route('/',methods=['POST'])
+@app.route('/create_data_model',methods=['POST'])
 def create_data_model():
     data['distance_matrix'] = request.form.get('distance_matrix')
     data['vehicle_capacities'] = request.form.get('vehicle_capacities')
@@ -36,6 +25,7 @@ def create_data_model():
     data['depot'] = request.form.get('depot')
     return data
 
+@app.route('/print_solution',methods=['POST'])
 def print_solution(data, manager, routing, solution):
     total_distance = 0
     total_load = 0
@@ -62,7 +52,7 @@ def print_solution(data, manager, routing, solution):
     print('Total distance of all routes: {}m'.format(total_distance))
     print('Total load of all routes: {}'.format(total_load))
 
-
+@app.route('/main',methods=['POST'])
 def main():
     """Solve the CVRP problem."""
     # Instantiate the data problem.
