@@ -17,7 +17,7 @@ def home():
     return render_template('OptimalRoute.html')
 
 
-@app.route('/',methods=['POST'])
+@app.route('/predict',methods=['POST'])
 def create_data_model():
     data = {}
     data['distance_matrix'] = []
