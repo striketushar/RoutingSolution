@@ -109,9 +109,9 @@ def main():
     search_parameters.time_limit.FromSeconds(1)
 
 
-# @app.route('/',methods=['POST'])
-    solution = routing.SolveWithParameters(search_parameters)
-    return render_template('OptimalRoute.html', prediction_text=solution)
+@app.route('/predict',methods=['POST'])
+solution = routing.SolveWithParameters(search_parameters)
+return render_template('OptimalRoute.html', prediction_text=solution)
 
     # # Print solution on console.
     # if solution:
