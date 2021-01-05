@@ -9,7 +9,7 @@ app = Flask(__name__)
 def home():
     return render_template('OptimalRoute.html')
 
-@app.route('/main', methods=['GET'])
+@app.route('/print_solution', methods=['GET'])
 
 
 def create_data_model():
