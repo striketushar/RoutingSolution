@@ -25,7 +25,6 @@ def create_data_model():
     data['depot'] = request.form.get('depot')
     return data
 
-@app.route('/print_solution',methods=['POST'])
 def print_solution(data, manager, routing, solution):
     total_distance = 0
     total_load = 0
@@ -52,7 +51,7 @@ def print_solution(data, manager, routing, solution):
     print('Total distance of all routes: {}m'.format(total_distance))
     print('Total load of all routes: {}'.format(total_load))
 
-@app.route('/main',methods=['POST'])
+
 def main():
     """Solve the CVRP problem."""
     # Instantiate the data problem.
@@ -109,6 +108,13 @@ def main():
 
     return render_template('OptimalRoute.html', prediction_text=solution)
 
+@app.route('/predict_api',methods=['POST'])
+def predict_api():
+    data = request.get_json(force=True)
+    solution = routing.SolveWithParameters(search_parameters)
+
+    output = solution
+    return jsonify(output)
     # # Print solution on console.
     # if solution:
     #     print_solution(data, manager, routing, solution)
