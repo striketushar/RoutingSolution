@@ -5,11 +5,12 @@ from ortools.constraint_solver import pywrapcp
 
 app = Flask(__name__)
 
-
-
 @app.route('/')
 def home():
     return render_template('OptimalRoute.html')
+
+
+
 
 def create_data_model():
     """Stores the data for the problem."""
@@ -118,7 +119,7 @@ def print_solution(data, manager, routing, solution):
     print('Total distance of all routes: {}m'.format(total_distance))
     print('Total load of all routes: {}'.format(total_load))
 
-
+@app.route('/main',methods=['POST'])
 def main():
     """Solve the CVRP problem."""
     # Instantiate the data problem.
