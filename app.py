@@ -5,26 +5,30 @@ from ortools.constraint_solver import pywrapcp
 app = Flask(__name__)
 
 
-data = {}
-data['distance_matrix'] = []
-data['vehicle_capacities'] = []
-data['demands'] = []
-# data['num_vehicles'] = []
-# data['depot'] = []
+# data = {}
+# data['distance_matrix'] = []
+# data['vehicle_capacities'] = []
+# data['demands'] = []
+# # data['num_vehicles'] = []
+# # data['depot'] = []
 
 @app.route('/')
 def home():
     return render_template('OptimalRoute.html')
 
 
-# @app.route('/create_data_model',methods=['POST'])
-# def create_data_model():
-#     data['distance_matrix'] = request.form.get('distance_matrix')
-#     data['vehicle_capacities'] = request.form.get('vehicle_capacities')
-#     data['demands'] = request.form.get('demands')
-#     data['num_vehicles'] = request.form.get('num_vehicles')
-#     data['depot'] = request.form.get('depot')
-#     return data
+@app.route('/create_data_model',methods=['POST'])
+def create_data_model():
+    data = {}
+    data['distance_matrix'] = []
+    data['vehicle_capacities'] = []
+    data['demands'] = []
+    data['distance_matrix'] = request.form.get('distance_matrix')
+    data['vehicle_capacities'] = request.form.get('vehicle_capacities')
+    data['demands'] = request.form.get('demands')
+    data['num_vehicles'] = request.form.get('num_vehicles')
+    data['depot'] = request.form.get('depot')
+    return data
 
 def print_solution(data, manager, routing, solution):
     total_distance = 0
@@ -105,14 +109,7 @@ def main():
     search_parameters.time_limit.FromSeconds(1)
 
 
-@app.route('/predict',methods=['POST'])
-def create_data_model():
-    data['distance_matrix'] = request.form.get('distance_matrix')
-    data['vehicle_capacities'] = request.form.get('vehicle_capacities')
-    data['demands'] = request.form.get('demands')
-    data['num_vehicles'] = request.form.get('num_vehicles')
-    data['depot'] = request.form.get('depot')
-    return data
+@app.route('/',methods=['POST'])
     # Solve the problem.
     solution = routing.SolveWithParameters(search_parameters)
 
