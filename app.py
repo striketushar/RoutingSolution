@@ -110,10 +110,8 @@ def main():
 
 
 @app.route('/',methods=['POST'])
-    # Solve the problem.
-    solution = routing.SolveWithParameters(search_parameters)
-
-    return render_template('OptimalRoute.html', prediction_text=solution)
+solution = routing.SolveWithParameters(search_parameters)
+return render_template('OptimalRoute.html', prediction_text=solution)
 
     # # Print solution on console.
     # if solution:
