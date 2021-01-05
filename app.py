@@ -4,6 +4,7 @@ from ortools.constraint_solver import pywrapcp
 
 app = Flask(__name__)
 
+
 data = {}
 data['distance_matrix'] = []
 data['vehicle_capacities'] = []
@@ -11,9 +12,9 @@ data['demands'] = []
 # data['num_vehicles'] = []
 # data['depot'] = []
 
-# @app.route('/')
-# def home():
-#     return render_template('OptimalRoute.html')
+@app.route('/')
+def home():
+    return render_template('OptimalRoute.html')
 
 
 # @app.route('/create_data_model',methods=['POST'])
@@ -103,10 +104,6 @@ def main():
         routing_enums_pb2.LocalSearchMetaheuristic.GUIDED_LOCAL_SEARCH)
     search_parameters.time_limit.FromSeconds(1)
 
-@app.route('/')
-def home():
-    return render_template('OptimalRoute.html')
-
 
 @app.route('/predict',methods=['POST'])
 def create_data_model():
@@ -121,13 +118,6 @@ def create_data_model():
 
     return render_template('OptimalRoute.html', prediction_text=solution)
 
-@app.route('/predict_api',methods=['POST'])
-def predict_api():
-    data = request.get_json(force=True)
-    solution = routing.SolveWithParameters(search_parameters)
-
-    output = solution
-    return jsonify(output)
     # # Print solution on console.
     # if solution:
     #     print_solution(data, manager, routing, solution)
