@@ -179,7 +179,10 @@ def main():
     # Print solution on console.
     if solution:
         print_solution(data, manager, routing, solution)
+        return render_template('OptimalRoute.html')
 
 
 if __name__ == '__main__':
     main()
+    
+app.run(debug=True)
