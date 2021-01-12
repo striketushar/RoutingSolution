@@ -9,7 +9,7 @@ app = Flask(__name__)
 def home():
     return render_template('OptimalRoute.html')
 
-@app.route('/main', methods=['GET','POST'])
+
 
 
 def create_data_model():
@@ -119,7 +119,7 @@ def print_solution(data, manager, routing, solution):
     print('Total distance of all routes: {}m'.format(total_distance))
     print('Total load of all routes: {}'.format(total_load))
 
-
+@app.route('/main', methods=['GET','POST'])
 def main():
     """Solve the CVRP problem."""
     # Instantiate the data problem.
