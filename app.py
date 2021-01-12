@@ -10,7 +10,7 @@ def home():
     return render_template('OptimalRoute.html')
 
 
-
+@app.route('/main', methods=['GET','POST'])
 
 def create_data_model():
     """Stores the data for the problem."""
@@ -86,8 +86,10 @@ def create_data_model():
         ],
     ]
     data['demands'] = [0, 1, 1, 2, 4, 2, 4, 8, 8, 1, 2, 1, 2, 4, 4, 8, 8]
-    data['vehicle_capacities'] = request.values.get('vehicle_capacities')
-    data['num_vehicles'] = request.values.get('num_vehicles')
+    #data['vehicle_capacities'] = request.values.get('vehicle_capacities')
+    data['vehicle_capacities'] = [15,15,15,15]
+    #data['num_vehicles'] = request.values.get('num_vehicles')
+    data['num_vehicles'] = 4
     data['depot'] = 0
     return data
 
@@ -119,7 +121,7 @@ def print_solution(data, manager, routing, solution):
     print('Total distance of all routes: {}m'.format(total_distance))
     print('Total load of all routes: {}'.format(total_load))
 
-@app.route('/main', methods=['GET','POST'])
+
 def main():
     """Solve the CVRP problem."""
     # Instantiate the data problem.
