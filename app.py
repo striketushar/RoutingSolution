@@ -12,7 +12,7 @@ def home():
 
 @app.route('/main', methods=['GET'])
 
-'''def create_data_model():
+def create_data_model():
     """Stores the data for the problem."""
     data = {}
     data['distance_matrix'] = [
@@ -91,7 +91,7 @@ def home():
     #data['num_vehicles'] = request.values.get('num_vehicles')
     data['num_vehicles'] = 4
     data['depot'] = 0
-    return data'''
+    return "XYZ"
 
 
 '''def print_solution(data, manager, routing, solution):
