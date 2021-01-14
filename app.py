@@ -94,7 +94,7 @@ def home():
     return data'''
 
 
-def print_solution(data, manager, routing, solution):
+'''def print_solution(data, manager, routing, solution):
     """Prints solution on console."""
     total_distance = 0
     total_load = 0
@@ -119,7 +119,7 @@ def print_solution(data, manager, routing, solution):
         total_distance += route_distance
         total_load += route_load
     print('Total distance of all routes: {}m'.format(total_distance))
-    print('Total load of all routes: {}'.format(total_load))
+    print('Total load of all routes: {}'.format(total_load))'''
 
 
 def main():
