@@ -128,7 +128,7 @@ def main():
     data = create_data_model()
 
     # Create the routing index manager.
-    manager = pywrapcp.RoutingIndexManager(len(data['distance_matrix']),
+    '''manager = pywrapcp.RoutingIndexManager(len(data['distance_matrix']),
                                            data['num_vehicles'], data['depot'])
 
     # Create Routing Model.
@@ -179,7 +179,7 @@ def main():
     # Print solution on console.
     if solution:
         print_solution(data, manager, routing, solution)
-        return render_template('OptimalRoute.html')
+        #return render_template('OptimalRoute.html')'''
 
 
 if __name__ == '__main__':
