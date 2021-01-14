@@ -124,11 +124,14 @@ def print_solution(data, manager, routing, solution):
 
 def main():
     """Solve the CVRP problem."""
+    
+    print("ERROR")
+    
     # Instantiate the data problem.
-    data = create_data_model()
+    '''data = create_data_model()
 
     # Create the routing index manager.
-    '''manager = pywrapcp.RoutingIndexManager(len(data['distance_matrix']),
+    manager = pywrapcp.RoutingIndexManager(len(data['distance_matrix']),
                                            data['num_vehicles'], data['depot'])
 
     # Create Routing Model.
