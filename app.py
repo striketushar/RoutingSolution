@@ -74,8 +74,8 @@ def main():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
-    #main()
+    #app.run(debug=True)
+    main()
 
 def create_data_model():
     """Stores the data for the problem."""
